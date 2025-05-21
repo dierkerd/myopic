@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+export USER_HOME=$HOME
+source `dirname $0`/../lib/bash.setup.sh
+export EDITOR=/usr/bin/nano
+export VISUAL=/usr/bin/nano
+export PATH="${my_bin}:${PATH}"
+if [ "$SUDO_USER" != "" ]
+then
+	export PS1="($my_user) [${SUDO_USER}@\h \W]\\$ "
+else
+	export PS1="($my_user) [\u@\h \W]\\$ "
+fi
+
+if [ "$PWD" != "$my_root" ]
+then
+	cd "$my_root"
+	echo "Entering ${my_project}..."
+fi
+
+if [[ "$my_user" != "$(id -un)" ]]
+then
+	echo "switching to user ${my_user} (via sudo)..."
+	sudo -E -u "$my_user" "$0"
+else
+	echo "type exit to leave project."
+	bash --norc -i
+fi

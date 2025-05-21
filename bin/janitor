@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+source `dirname $0`/../lib/bash.subrc.sh
+say "cleaning ${my_log}"
+find ${my_log} -type f -mtime +30 -not -name '.gitignore' -print -delete 2>&1 | sed -E "s~^${my_log}/~~" | \
+while IFS= read -r line
+do
+	say "deleted: $line"
+done
+
+say 'cleaning *~ files'
+cd ${my_root}
+find etc lib bin tmp var -maxdepth 1 -user ${my_user} -type d|grep -v '^.$' | xargs -I_-_ find _-_ -name '*~' -delete -type f -mtime +3 -print | \
+while IFS= read -r line
+do
+	say "deleted: $line"
+done

@@ -1,0 +1,22 @@
+{
+    "require": {
+        "bcosca/fatfree-core": "^3.7",
+        "paragonie/certainty": "^2.8",
+        "monolog/monolog": "^2.3",
+        "league/csv": "^9.7",
+        "league/flysystem": "^2.3",
+        "league/flysystem-sftp": "^2.0",
+        "swiftmailer/swiftmailer": "^6.2",
+        "predis/predis": "^1.1",
+        "hashids/hashids": "^4.1",
+        "giggsey/libphonenumber-for-php": "^8.12",
+        "phing/phing": "^2.17",
+        "matomo/ini": "^3.0",
+        "symfony/mailer": "^6.2"
+    },
+	"autoload": {
+		"psr-4": {
+			"":"lib/"
+		}
+	}
+}

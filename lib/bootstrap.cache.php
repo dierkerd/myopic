@@ -1,0 +1,1 @@
+<?php $cache = \Cache::instance();
